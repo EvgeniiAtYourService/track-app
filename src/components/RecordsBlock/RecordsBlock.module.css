@@ -1,0 +1,45 @@
+.container {
+    border: 1px solid grey;
+    height: 375px;
+    width: 350px;
+}
+
+.header {
+    border-bottom: 1px solid grey;
+    height: 50px;
+
+    display: flex;
+}
+
+.header__side {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__side:first-child {
+    border-right: 1px solid grey;
+}
+
+.header__total-time {
+    font-size: xx-large;
+}
+
+.record-cols {
+    display: flex;
+    height: 86.7%;
+    /* height: 200px; */
+}
+
+.records-col {
+    border-right: 1px solid grey;
+    text-align: center;
+    padding-top: 5px;
+    width: 24.8%;
+}
+
+.records-col--no-border {
+    border-right: none;
+}
