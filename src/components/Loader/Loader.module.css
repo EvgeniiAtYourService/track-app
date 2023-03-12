@@ -1,0 +1,21 @@
+.loader {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: conic-gradient(grey 10%, #fff);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 5px), grey 0);
+    animation: rotation 1s infinite linear;
+    position: absolute;
+    left: 76.5%;
+    top: calc(50% - 13px);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-1turn);
+    }
+}

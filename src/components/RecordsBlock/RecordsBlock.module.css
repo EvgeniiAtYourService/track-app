@@ -7,6 +7,7 @@
 .header {
     border-bottom: 1px solid grey;
     height: 50px;
+    margin-top: -1px;
 
     display: flex;
 }
@@ -21,16 +22,24 @@
 
 .header__side:first-child {
     border-right: 1px solid grey;
+    /* for Loader */
+    position: relative; 
 }
 
 .header__total-time {
     font-size: xx-large;
+
+    cursor: pointer;
+}
+
+.header__total-time:active {
+    position: relative;
+    bottom: 1px;
 }
 
 .record-cols {
     display: flex;
     height: 86.7%;
-    /* height: 200px; */
 }
 
 .records-col {
@@ -38,6 +47,10 @@
     text-align: center;
     padding-top: 5px;
     width: 24.8%;
+}
+
+.records-col--with-scroll {
+    overflow-y: scroll;
 }
 
 .records-col--no-border {

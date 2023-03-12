@@ -1,17 +1,13 @@
+import { IRecord, ISign } from '../../models/record'
 import styles from './Record.module.css'
 
-interface IProps {
-    sign: ISign;
-    time: string;
-}
-
-type ISign = '+' | '-';
+type Props = IRecord
 
 const renderSign = (sign: ISign) => {
   return <span className={sign === '-' ? styles['minus-sign'] : undefined}>{sign}</span>
 }
 
-const Record: React.FC<IProps> = ({ sign, time }) => {
+const Record: React.FC<Props> = ({ sign, time }) => {
   return (
       <p className={styles['record']}>{renderSign(sign)} {time}</p>
   )

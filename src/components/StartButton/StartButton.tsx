@@ -1,7 +1,12 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useCallback } from 'react'
 import styles from './StartButton.module.css'
 
-const StartButton = () => {
+interface IProps {
+    activated?: boolean;
+    didClicked: () => void;
+}
+
+const StartButton: React.FC<IProps> = ({ activated, didClicked }) => {
 
     const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -9,8 +14,21 @@ const StartButton = () => {
         buttonRef.current?.focus()
     }, [])
 
+    const didChanged = useCallback(() => {
+        didClicked()
+    }, [didClicked]);
+
+    const buttonClassNames = `${styles['button']} ${activated ? styles['button--activated'] : undefined}`;
+
     return (
-        <button ref={buttonRef} onClick={()=>{}} disabled={false} className={styles['button']}>On</button>
+        <button 
+            ref={buttonRef} 
+            onClick={didChanged} 
+            disabled={false} 
+            className={buttonClassNames}
+        >
+            {activated ? 'On' : 'Off'}
+        </button>
     )
 }
 
