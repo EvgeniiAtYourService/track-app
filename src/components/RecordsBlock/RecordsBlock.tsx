@@ -77,7 +77,10 @@ const RecordsBlock = () => {
     const { decrement } = useActions()
         
     const [times2, setTimes2] = useState([])
-    const [total, setTotal] = useState('00:00')
+
+    const savedTotal = JSON.parse(localStorage.getItem('trackTotal') as any);
+
+    const [total, setTotal] = useState(savedTotal || '00:00')
     
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('trackTimes') as any);
@@ -138,10 +141,11 @@ const RecordsBlock = () => {
 
             totalH += Math.floor(totalM / 60)
 
+            const newTotal = `${addZero(totalH)}:${addZero(totalM % 60)}`;
 
-            setTotal(`${addZero(totalH)}:${addZero(totalM % 60)}`)
+            setTotal(newTotal)
 
-
+            localStorage.setItem('trackTotal', JSON.stringify(newTotal))
 
         } else {
             return
@@ -162,6 +166,7 @@ const RecordsBlock = () => {
         setTimes2([])
         localStorage.removeItem('trackTimes')
         setTotal('00:00')
+        localStorage.removeItem('trackTotal')
     }, [times2, total]); 
 
     // --localStorage
